@@ -4,13 +4,16 @@ import YearSelector from './components/YearSelector';
 import TypeSelector from './components/TypeSelector';
 import PercentageInput from './components/PercentageInput';
 import FurnitureSelector from './components/FurnitureSelector';
+import IntegerInput from './components/IntegerInput';
+import GemeenteSelector from './components/GemeenteSelector'; // Import the new component
 
 const CalculatorPage = () => {
     const [type, setType] = useState('');
     const [typePercentage, setTypePercentage] = useState(50);
     const [furniture, setFurniture] = useState('');
-    const [cadastralIncome, setCadastralIncome] = useState(50);
-    const [grossAnnualIncome, setGrossAnnualIncome] = useState(12000);
+    const [cadastralIncome, setCadastralIncome] = useState('');
+    const [grossAnnualIncome, setGrossAnnualIncome] = useState('');
+    const [municipality, setMunicipality] = useState(''); // State for selected municipality
     const [taxBracket, setTaxBracket] = useState('€ 11.000 to € 50.000');
     const [totalTax, setTotalTax] = useState(7000);
 
@@ -36,6 +39,20 @@ const CalculatorPage = () => {
                 </div>
             )}
             <FurnitureSelector furniture={furniture} setFurniture={setFurniture} />
+            <IntegerInput
+                label="Kadastraal Inkomen"
+                value={cadastralIncome}
+                setValue={setCadastralIncome}
+            />
+            <IntegerInput
+                label="Bruto jaarlijkse huurinkomst"
+                value={grossAnnualIncome}
+                setValue={setGrossAnnualIncome}
+            />
+            <GemeenteSelector
+                municipality={municipality}
+                setMunicipality={setMunicipality}
+            />
         </div>
     );
 };
